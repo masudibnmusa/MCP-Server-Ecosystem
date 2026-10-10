@@ -1,0 +1,30 @@
+{
+  "$schema": "./servers.schema.json",
+  "servers": [
+    {
+      "name": "database",
+      "transport": "stdio",
+      "command": "python",
+      "args": ["-m", "servers.database_server.server"],
+      "trusted": true,
+      "permissions": {
+        "allow": ["run_query", "describe_table", "list_tables"],
+        "deny": ["insert_record"]
+      }
+    },
+    {
+      "name": "calendar",
+      "transport": "stdio",
+      "command": "python",
+      "args": ["-m", "servers.calendar_server.server"],
+      "trusted": true
+    },
+    {
+      "name": "tickets",
+      "transport": "http",
+      "url": "http://127.0.0.1:8080/mcp",
+      "auth": { "type": "bearer", "env": "HTTP_SERVER_TOKEN" },
+      "trusted": true
+    }
+  ]
+}
