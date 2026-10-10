@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+data/logs/*
+data/sample_db/*.sqlite
+data/tickets.jsonl
+data/chat_outbox.jsonl
+
+credentials.json
+token.json
